@@ -1,0 +1,48 @@
+{
+  "name": "todo-finder",
+  "version": "1.0.0",
+  "bin": "dist/cli.js",
+  "files": [ "dist", "src" ],
+  "scripts": {
+    "start": "node dist/cli.js",
+    "build": "tsc -p . -d",
+    "watch": "tsc -w",
+    "test": "jest src"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^26.0.22",
+    "@typescript-eslint/eslint-plugin": "^4.21.0",
+    "@typescript-eslint/parser": "^4.21.0",
+    "eslint": "^7.24.0",
+    "jest": "^26.6.3",
+    "ts-jest": "^26.5.4"
+  },
+  "dependencies": {
+    "pkg": "^4.5.1",
+    "typescript": "^4.2.4"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "rules": {
+      "newline-before-return": 2,
+      "no-console": 0
+    }
+  },
+  "eslintIgnore": [
+    "node_modules/",
+    "dist/"
+  ]
+}
