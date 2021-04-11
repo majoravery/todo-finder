@@ -1,25 +1,11 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-const REGEX_IS_ITEM_A_FILE = /^\S*\.\S+$/;
 const REGEX_TODO = /"TODO"/;
 
 const IGNORE_PATHS = [
   'dist',
   'node_modules',
-  'src',
-  '.DS_Store',
-  '.eslintrc.js',
-  '.gitignore',
-  '.npmrc',
-  'jest.config.js',
-  'list-todos.js',
-  'list-todos.test.js',
-  'package-lock.json',
-  'package.json',
-  'README.md',
-  'tsconfig.json',
-  'TodoFinder.ts',
 ];
  
 export default class TodoFinder {
@@ -43,11 +29,10 @@ export default class TodoFinder {
       }
 
       const itemPath = path.resolve(directory, item);
-      if (REGEX_IS_ITEM_A_FILE.test(item)) {
+      if (fs.lstatSync(itemPath).isFile()) {
         // Push item into hold array to check for later, check folders first
         filesInDirectory.push(itemPath);
-      } else {
-        // Item is a folder, traversing...
+      } else if (fs.lstatSync(itemPath).isDirectory()) {
         this.findFiles(itemPath);
       }
     }
