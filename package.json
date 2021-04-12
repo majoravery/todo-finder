@@ -1,10 +1,13 @@
 {
   "name": "todo-finder",
   "version": "1.0.0",
-  "bin": "dist/index.js",
+  "bin": {
+    "todo-finder": "dist/index.js"
+  },
   "scripts": {
-    "start": "node dist/cli.js",
-    "build": "tsc -p . -d && npx pkg . -t node14-linux-x64,node14-macos-x64,node14-win-x64 -o bin/find-todos",
+    "start": "node dist/index.js",
+    "build": "tsc -p . -d",
+    "compile": "npx pkg . -t node14-linux-x64,node14-macos-x64,node14-win-x64 -o bin/find-todos",
     "watch": "tsc -w",
     "test": "jest src",
     "clean": "rm -rf bin dist"
